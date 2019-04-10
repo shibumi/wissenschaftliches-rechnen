@@ -1,5 +1,6 @@
 //
-// Created by chris on 4/10/19.
+// Created by Christian Rebischke on 4/10/19.
+// Matrikelnummer: 432108
 //
 
 #ifndef WISSENSCHAFTLICHES_RECHNEN_FIBONACCI_H
@@ -12,7 +13,6 @@ public:
 
     Faculty();
     unsigned int calculate();
-    void test();
 };
 
 
