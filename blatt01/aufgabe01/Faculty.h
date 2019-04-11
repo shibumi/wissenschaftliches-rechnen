@@ -1,6 +1,9 @@
 //
-// Created by Christian Rebischke on 4/10/19.
+// Christian Rebischke
 // Matrikelnummer: 432108
+//
+// Sajedeh Majdi:
+// Matrikelnummer: 493981
 //
 
 #ifndef WISSENSCHAFTLICHES_RECHNEN_FIBONACCI_H
