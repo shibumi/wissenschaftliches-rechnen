@@ -14,9 +14,7 @@ using namespace std;
 
 // This method checks for leap years
 bool LeapYear::checkForLeapYear(unsigned int year) {
-    if (year % 100 != 0 && year % 4 == 0) return true;
-    else if (year % 400 == 0) return true;
-    else return false;
+    return (year % 100 != 0 && year % 4 == 0) || (year % 400 == 0);
 }
 
 // This method is testing our method with provided leap years
