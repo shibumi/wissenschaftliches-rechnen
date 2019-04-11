@@ -41,6 +41,7 @@ void LeapYear::test() {
 
 int main() {
     LeapYear leapyear = LeapYear();
+    // uncomment the following line for testing all provided years
     //leapyear.test();
     unsigned int year;
     cout << "Please enter an unsigned integer as year: ";
