@@ -11,16 +11,20 @@ public:
     Rational(int numerator, int denominator);
     explicit Rational(int number);
     Rational();
-    int numerator();
-    int denominator();
-    void print();
+    const int numerator();
+    const int denominator();
+    const void print();
     int gcd(int numerator, int denominator);
+    void operator+=(Rational y);
+    void operator*=(Rational y);
+    void operator-=(Rational y);
+    void operator/=(Rational y);
+    bool operator==(Rational y);
 private:
     struct rational {
         int numerator;
         int denominator;
-    } rational1;
+    } m_rational;
 };
-
 
 #endif //BLATT01_RATIONAL_H
