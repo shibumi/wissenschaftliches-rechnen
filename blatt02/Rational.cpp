@@ -7,14 +7,14 @@
 
 using namespace std;
 
-Rational::Rational() : m_rational{1,1} {
+Rational::Rational() : m_rational{1, 1} {
 }
 
-Rational::Rational(int number) : m_rational{number,1} {
+Rational::Rational(int number) : m_rational{number, 1} {
 
 }
 
-Rational::Rational(int x, int y) : m_rational{x,y} {
+Rational::Rational(int x, int y) : m_rational{x, y} {
 }
 
 const int Rational::numerator() {
@@ -32,16 +32,18 @@ const void Rational::print() {
 }
 
 int Rational::gcd(int numerator, int denominator) {
-    if (denominator != 0) return gcd(denominator, numerator%denominator);
+    if (denominator != 0) return gcd(denominator, numerator % denominator);
     else return numerator;
 }
 
 bool Rational::operator==(const Rational y) {
+    //TODO respect cases like 1/1 == 5/5
     return m_rational.numerator == y.m_rational.denominator && m_rational.denominator == y.m_rational.denominator;
 }
 
 void Rational::operator+=(const Rational y) {
-    m_rational.numerator = (m_rational.numerator * y.m_rational.denominator) + (y.m_rational.numerator * m_rational.denominator);
+    m_rational.numerator =
+            (m_rational.numerator * y.m_rational.denominator) + (y.m_rational.numerator * m_rational.denominator);
     m_rational.denominator *= y.m_rational.denominator;
 }
 
@@ -51,7 +53,8 @@ void Rational::operator*=(const Rational y) {
 }
 
 void Rational::operator-=(const Rational y) {
-    m_rational.numerator = (m_rational.numerator * y.m_rational.denominator) - (y.m_rational.numerator * m_rational.denominator);
+    m_rational.numerator =
+            (m_rational.numerator * y.m_rational.denominator) - (y.m_rational.numerator * m_rational.denominator);
     m_rational.denominator *= y.m_rational.denominator;
 }
 
@@ -60,14 +63,42 @@ void Rational::operator/=(const Rational y) {
     m_rational.denominator *= y.m_rational.numerator;
 }
 
+Rational operator+(const Rational x, const Rational y) {
+    Rational tmp = Rational(x);
+    tmp += y;
+    return tmp;
+}
 
+Rational operator-(const Rational x, const Rational y) {
+    Rational tmp = Rational(x);
+    tmp -= y;
+    return tmp;
+}
+
+Rational operator*(const Rational x, const Rational y) {
+    Rational tmp = Rational(x);
+    tmp *= y;
+    return tmp;
+}
+
+Rational operator/(const Rational x, const Rational y) {
+    Rational tmp = Rational(x);
+    tmp /= y;
+    return tmp;
+}
+
+void testRational() {
+    Rational f1 = Rational(-3, 12);
+    Rational f2 = Rational(4, 3);
+    Rational f3 = Rational(0, 1);
+    if (f3 == f1 + f2) cout << "test passed: f3 = f1 + f2" << endl;
+    else cout << "test failed: f3 = f1 + f2" << endl;
+    if (f3 == f1 * f2) cout << "test passed: f3 = f1 * f2" << endl;
+    else cout << "test failed: f3 = f1 * f2" << endl;
+
+}
 
 
 int main() {
-    Rational rat = Rational(6,7);
-    rat.print();
-    Rational rat2 = Rational(3,4);
-    rat2.print();
-    rat /= rat2;
-    rat.print();
+    testRational();
 }
