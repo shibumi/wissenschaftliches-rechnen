@@ -38,7 +38,10 @@ int Rational::gcd(int numerator, int denominator) {
 
 bool Rational::operator==(const Rational y) {
     //TODO respect cases like 1/1 == 5/5
-    return m_rational.numerator == y.m_rational.denominator && m_rational.denominator == y.m_rational.denominator;
+    int y_divisor = gcd(y.m_rational.numerator, y.m_rational.denominator);
+    int divisor = gcd(m_rational.numerator, m_rational.denominator);
+    return m_rational.numerator / divisor == y.m_rational.numerator / y_divisor &&
+           m_rational.denominator / divisor == y.m_rational.denominator / y_divisor;
 }
 
 void Rational::operator+=(const Rational y) {
@@ -90,8 +93,14 @@ Rational operator/(const Rational x, const Rational y) {
 void testRational() {
     Rational f1 = Rational(-3, 12);
     Rational f2 = Rational(4, 3);
-    Rational f3 = Rational(0, 1);
-    if (f3 == f1 + f2) cout << "test passed: f3 = f1 + f2" << endl;
+    Rational f3 = Rational(13, 12);
+    Rational f4 = Rational(-1, 3);
+    Rational f5 = Rational(16, 3);
+    Rational f6 = Rational(19, 3);
+    Rational f7 = Rational(-3, 1);
+    Rational f8 = Rational(-3, 2);
+    Rational f9 = Rational(-3, 16);
+    if (f3 == (f1 + f2)) cout << "test passed: f3 = f1 + f2" << endl;
     else cout << "test failed: f3 = f1 + f2" << endl;
     if (f3 == f1 * f2) cout << "test passed: f3 = f1 * f2" << endl;
     else cout << "test failed: f3 = f1 * f2" << endl;
