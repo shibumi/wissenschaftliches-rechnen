@@ -20,6 +20,12 @@ public:
     void operator-=(Rational y);
     void operator/=(Rational y);
     bool operator==(Rational y);
+    bool operator!=(Rational y);
+    bool operator<(Rational y);
+    bool operator>(Rational y);
+    bool operator<=(Rational y);
+    bool operator>=(Rational y);
+    double toDouble();
 private:
     struct rational {
         int numerator;
