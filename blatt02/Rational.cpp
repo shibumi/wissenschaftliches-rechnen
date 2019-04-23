@@ -175,22 +175,22 @@ void testRational() {
     else cout << "test failed: f3 = f1 + f2" << endl;
     result = f1 * f2;
     if (result == f4) cout << "test passed: f3 = f1 * f2" << endl;
-    else cout << "test failed: f3 = f1 * f2" << endl;
+    else cout << "test failed: f4 = f1 * f2" << endl;
     result = four + f2;
     if (result == f5) cout << "test passed: f3 = 4 + f2" << endl;
-    else cout << "test failed: f3 = 4 + f2" << endl;
+    else cout << "test failed: f5 = 4 + f2" << endl;
     result = f2 + five;
     if (result == f6) cout << "test passed: f3 = f2 + 5" << endl;
-    else cout << "test failed: f3 = f2 + 5" << endl;
+    else cout << "test failed: f6 = f2 + 5" << endl;
     result = twelve * f1;
     if (result == f7) cout << "test passed: f3 = 12 * f1" << endl;
-    else cout << "test failed: f3 = 12 * f1" << endl;
+    else cout << "test failed: f7 = 12 * f1" << endl;
     result = f1 * six;
     if (result == f8) cout << "test passed: f3 = f1 * 6" << endl;
-    else cout << "test failed: f3 = f1 * 6" << endl;
+    else cout << "test failed: f8 = f1 * 6" << endl;
     result = f1 / f2;
     if (result == f9) cout << "test passed: f3 = f1 / f2" << endl;
-    else cout << "test failed: f3 = f1 / f2" << endl;
+    else cout << "test failed: f9 = f1 / f2" << endl;
     // tests for task 7
     cout << endl;
     cout << "starting tests.. printing numbers" << endl;
