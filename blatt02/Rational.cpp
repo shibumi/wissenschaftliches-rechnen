@@ -1,6 +1,11 @@
-//
-// Created by chris on 4/17/19.
-//
+ //
+ // Christian Rebischke
+ // Matrikelnummer: 432108
+ //
+ // Sajedeh Majdi:
+ // Matrikelnummer: 493981
+ //
+
 
 #include "Rational.h"
 #include <iostream>
@@ -225,5 +230,4 @@ double Rational::toDouble() {
 
 int main() {
     testRational();
-
 }
