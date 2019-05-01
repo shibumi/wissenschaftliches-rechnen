@@ -13,7 +13,7 @@ int main () {
     list.append(2);
     list.append(3);
     list.insert(list.first(), 1);
-    for (Node *n = list.first(); n != 0; n = list.next(n))
+    for (Node *n = list.first(); n != nullptr; n = list.next(n))
         std::cout << n->m_value << std::endl;
     return 0;
 }
