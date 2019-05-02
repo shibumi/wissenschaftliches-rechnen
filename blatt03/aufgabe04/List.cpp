@@ -33,6 +33,7 @@ List::~List() {
 }
 
 const Node* List::findMax() const {
+    if(this->m_head == nullptr) return nullptr;
     Node* node = this->m_head;
     for(Node *current = first(); current != nullptr; current = next(current)) {
         if( node->m_value < current->m_value) node = current;
@@ -41,6 +42,7 @@ const Node* List::findMax() const {
 }
 
 const Node* List::findMin() const {
+    if(this->m_head == nullptr) return nullptr;
     Node* node = this->m_head;
     for(Node *current = first(); current != nullptr; current = next(current)) {
         if( node->m_value > current->m_value) node = current;
