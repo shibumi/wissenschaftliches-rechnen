@@ -34,3 +34,7 @@ Die Fragestellung ist schwammig, da `Heap` nicht genau das gleiche ist wie der `
 3. a) `p` hat den Wert 0 da der Speicher freigegeben wird und `*p` behält die alte Adresse bei, die beim Speicher allokieren vergeben worden ist.
    b) beim ersten Beispiel kann der allokierte Speicher nicht mehr freigegeben werden, da die Adresse vom Pointer zum Speicher verloren geht. Das zweite Beispiel ist jedoch sinnvoll, da so ein Pointer als `invalid` markiert werden kann.
 
+## Übung 4
+
+1. Das besondere ist, dass der Pointer als `invalid` markiert wird, da er auf keine gültige Speicheradresse zeigt.
+5. Es kommt zu einem sogenannten `Double free`. Dabei wird versucht Speicher mehrmals freizugeben. Das Problem dahinter ist, dass beide Listen auf die gleichen Speicherbereiche zeigen, da ein `copy-by-reference` stattfand, statt ein `copy-by-value` in dem nur die Listen Werte kopiert werden.
