@@ -8,6 +8,10 @@
 
 using namespace std;
 
+void testListMinMax() {
+
+}
+
 int main () {
     List list;
     list.append(2);
@@ -15,5 +19,6 @@ int main () {
     list.insert(list.first(), 1);
     for (Node *n = list.first(); n != nullptr; n = list.next(n))
         std::cout << n->m_value << std::endl;
+    List list2 = list;
     return 0;
 }

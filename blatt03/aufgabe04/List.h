@@ -10,8 +10,12 @@ class List {
 public:
     int m_length;
     Node *m_head;
-    List (); // create an empty list
+    List(); // create an empty list
+    List(const List &list); // copy-by-value constructor
+    List &operator=(const List &list);
     ~List (); // clean up the list and all nodes
+    const Node *findMin() const;
+    const Node *findMax() const;
     Node *first() const; // return a pointer to the first entry
     Node *next(const Node *n) const; // return a pointer to the node after n
     void append (int i); // append a value to the end of the list
