@@ -1,5 +1,9 @@
 //
-// Created by chris on 5/1/19.
+// Christian Rebischke
+// Matrikelnummer: 432108
+//
+// Sajedeh Majdi:
+// Matrikelnummer: 493981
 //
 
 #ifndef WISSENSCHAFTLICHES_RECHNEN_LIST_H
@@ -11,6 +15,9 @@ class List {
 public:
     int m_length; // the length of the list, not really used here
     Node *m_head; // the head of our list, very much used :)
+    const Node *minCache; // our cache for the minimum element
+    const Node *maxCache; // our cache for the maximum element
+    bool cacheStatus; // false if cache is not up to date
     List(); // create an empty list
     List(const List &list); // copy-by-value constructor
     List &operator=(const List &list); // our assignment operator for assigning a list via copy-by-value

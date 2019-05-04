@@ -1,5 +1,9 @@
 //
-// Created by chris on 5/1/19.
+// Christian Rebischke
+// Matrikelnummer: 432108
+//
+// Sajedeh Majdi:
+// Matrikelnummer: 493981
 //
 
 #ifndef WISSENSCHAFTLICHES_RECHNEN_NODE_H

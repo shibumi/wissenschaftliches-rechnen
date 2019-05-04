@@ -1,5 +1,9 @@
 //
-// Created by chris on 5/1/19.
+// Christian Rebischke
+// Matrikelnummer: 432108
+//
+// Sajedeh Majdi:
+// Matrikelnummer: 493981
 //
 #include <iostream>
 #include "List.h"
@@ -39,16 +43,21 @@ void testListMinMax() {
     testList.insert(testList.findNode(0), -301);
     testList.erase(testList.findNode(0));
     testList.append(-300);
+    // erase minCache to check if cache updating works
+    testList.erase(testList.findNode(-301));
     minResult = testList.findMin();
     maxResult = testList.findMax();
-    if (minResult->m_value != -301)
-        cout << "ERROR: findMin() should return -301 for List with min element -301; got " << minResult->m_value
+    if (minResult->m_value != -300)
+        cout << "ERROR: findMin() should return -300 for List with min element -300; got " << minResult->m_value
              << endl;
     else cout << "PASSED: findMin() test on List with random values" << endl;
     if (maxResult->m_value != 9000)
         cout << "ERROR: findMin() should return 9000 for List with max element 9000; got " << maxResult->m_value
              << endl;
     else cout << "PASSED: findMax() test on List with random values" << endl;
+    testList.insert(nullptr, 0); // this should add a node with the value 0 at the end of the list...
+    testList.erase(nullptr); // this should do nothing, but let's see if we run into an error here...
+
 }
 
 
