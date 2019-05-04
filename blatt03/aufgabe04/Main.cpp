@@ -34,6 +34,16 @@ void testListMinMax() {
     if (maxResult->m_value != -5)
         cout << "ERROR: findMax() should return -5 for List with element -5; got " << maxResult->m_value << endl;
     else cout << "PASSED: findMax() test on List with one element" << endl;
+    // Little check for what will happen if we delete the last node in our list
+    testList.erase(testList.findNode(-5));
+    minResult = testList.findMin();
+    maxResult = testList.findMax();
+    if (minResult != nullptr)
+        cout << "ERROR: findMin() should return a nullptr when list is empty " << minResult->m_value << endl;
+    else cout << "PASSED: findMin() returns a nullptr when list is empty" << endl;
+    if (maxResult != nullptr)
+        cout << "ERROR: findMin() should return a nullptr when list is empty " << maxResult->m_value << endl;
+    else cout << "PASSED: findMin() returns a nullptr when list is empty" << endl;
     // test random list with positive and negative numbers
     testList.append(5);
     testList.append(9000);
