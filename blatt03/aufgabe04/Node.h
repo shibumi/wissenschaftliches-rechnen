@@ -7,14 +7,14 @@
 
 
 class Node {
-    friend class List;
+    friend class List; // I doubt that we really need this in our implementation
 public:
-    explicit Node(int value);
-    void setNext(Node *next);
-    Node *getNext() const;
-    int m_value;
+    explicit Node(int value); // We set this explicit, because we demand an integer as parameter
+    void setNext(Node *next); // this sets the next node
+    Node *getNext() const; // this returns the next node
+    int m_value; // this holds the value of a node
 private:
-    Node *m_next;
+    Node *m_next; // this holds the next node
 };
 
 
