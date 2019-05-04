@@ -71,8 +71,12 @@ int main() {
     list.insert(list.first(), 1);
     for (Node *n = list.first(); n != nullptr; n = list.next(n))
         std::cout << n->m_value << std::endl;
-    List list2 = list;
+    List list2 = list; // calls copy-by-value constructor
+    List list3;
+    list3 = list; // calls copy-by-value assignment operator
     for (Node *n = list2.first(); n != nullptr; n = list2.next(n))
+        std::cout << n->m_value << std::endl;
+    for (Node *n = list3.first(); n != nullptr; n = list3.next(n))
         std::cout << n->m_value << std::endl;
     return 0;
 }
