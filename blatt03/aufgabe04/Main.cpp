@@ -2,7 +2,7 @@
 // Christian Rebischke
 // Matrikelnummer: 432108
 //
-// Sajedeh Majdi:
+// Sajedeh Majdi
 // Matrikelnummer: 493981
 //
 #include <iostream>
