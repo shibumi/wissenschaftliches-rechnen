@@ -42,6 +42,7 @@ List &List::operator=(const List &list) {
     for (Node *current = list.first(); current != nullptr; current = list.next(current)) {
         append(current->m_value);
     }
+    return *this;
 }
 
 // This is our custom destructor. It will destroy all our nodes, set the length to 0 and the head to a nullptr
