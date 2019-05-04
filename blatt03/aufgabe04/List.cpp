@@ -104,11 +104,11 @@ void List::append(int i) {
         }
     }
     // if our list is empty set our caches to the newly added node
-    if(this->minCache == nullptr) this->minCache = node;
-    if(this->maxCache == nullptr) this->maxCache = node;
+    if (this->minCache == nullptr) this->minCache = node;
+    if (this->maxCache == nullptr) this->maxCache = node;
     // if our new node is better as our caches update cache
-    if(this->minCache->m_value > node->m_value) this->minCache = node;
-    if(this->maxCache->m_value < node->m_value) this->maxCache = node;
+    if (this->minCache->m_value > node->m_value) this->minCache = node;
+    if (this->maxCache->m_value < node->m_value) this->maxCache = node;
     // always set cache up to date after this operations
     this->cacheStatus = true;
     this->m_length++;
@@ -140,8 +140,8 @@ void List::insert(Node *n, int i) {
             }
         }
     }
-    if(this->minCache->m_value > node->m_value) this->minCache = node;
-    if(this->maxCache->m_value < node->m_value) this->maxCache = node;
+    if (this->minCache->m_value > node->m_value) this->minCache = node;
+    if (this->maxCache->m_value < node->m_value) this->maxCache = node;
     // always set cache up to date after this operations
     this->cacheStatus = true;
     this->m_length++;
@@ -164,12 +164,12 @@ void List::erase(Node *n) {
         }
     }
     // If our node that shall be erased is one of our caches re-cache the values
-    if(this->minCache == n) {
+    if (this->minCache == n) {
         this->cacheStatus = false;
         this->minCache = findMin();
         this->cacheStatus = true;
     }
-    if(this->maxCache == n) {
+    if (this->maxCache == n) {
         this->cacheStatus = false;
         this->maxCache = findMax();
         this->cacheStatus = true;
