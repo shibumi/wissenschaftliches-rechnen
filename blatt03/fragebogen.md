@@ -1,6 +1,6 @@
 # Aufgabenblatt 3
 * Christian Rebischke (432108)
-* Sajedeh Majdi ()
+* Sajedeh Majdi (493981)
 
 ## Übung 1
 Die Frage ist etwas uneindeutig, deshalb gehe ich davon aus, dass geprüft werden soll ob die Expressions (Ausdrücke) Fehler werfen würden.
