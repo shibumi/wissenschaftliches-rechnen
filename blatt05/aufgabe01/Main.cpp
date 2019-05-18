@@ -43,7 +43,7 @@ int main() {
     cout << "Size of compositeChar: " << sizeof(compositeChar) << endl;
     CompositeLongLong compositeLongLong = {
             empty,
-            numeric_limits<long long>::max(), // Byte size of 16
+            numeric_limits<long long>::max(), // Byte size of 8
     };
     cout << "Size of compositeLongLong: " << sizeof(compositeLongLong) << endl;
 }
