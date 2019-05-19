@@ -1,3 +1,3 @@
-project(blatt05-aufgabe01)
+project(blatt05-aufgabe03)
 
-add_executable(blatt05-aufgabe1 Main.cpp Empty.cpp)
+add_executable(blatt05-aufgabe3 aufgabe03.cpp)
