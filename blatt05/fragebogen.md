@@ -59,7 +59,36 @@ Bei einem `char` im struct ist die Größe des `struct` 2 Bytes, da das Objekt d
 und ein `char` ebenfalls 1 Byte beansprucht. `long long` beansprucht 8 Bytes auf meinem System, dementsprechend wird der Speicher
 auf 16 Bytes für das `struct` aligned. Bei den *überflüssigen* Bytes handelt es sich um ein sogenanntes `Padding` um
 den Speicher zu alignen. `Address Alignment` wird von Compilern benutzt um einen schnellen Zugang auf den Speicher zu ermöglichen.
-Siehe auch: http://www.catb.org/esr/structure-packing/#_padding
+Siehe auch: http://www.catb.org/esr/structure-packing/#\_padding
 
 
+## Aufgabe 3
+### Teilaufgabe 1
+
+Das Programm lässt sich nicht übersetzen, da via der Funktion `test()` nicht auf die Funktion `foo()` innerhalb
+der Funktion `bar()` in der Klasse `C` zugegriffen werden darf, da es sich um eine private Vererbung von `B` handelt.
+Dadurch sind alle öffentlichen Mitglieder der Klasse `B`, private Mitglieder der Klasse `C` und somit kann `test()`
+nicht mehr auf die Funktion zugreifen.
+
+### Teilaufgabe 2
+
+Die Lösung sieht wie folgt aus:
+```c++
+//....
+class C : public B { // Fixed Class C via setting B public
+public:
+    void bar() { foo(); }
+};
+//....
+```
+
+Durch das Setzen von `private B` zu `public B` lässt sich die Funktion wieder aufrufen.
+Die Ausgabe sieht danach wie folgt aus:
+```
+A::foo
+B::foo
+A::foo
+B::foo
+A::foo
+```
 
