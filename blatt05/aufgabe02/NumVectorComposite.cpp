@@ -11,9 +11,7 @@ private:
     std::vector<double> v;
 public:
     // We use size_type instead of int here, because it's platform independent
-    explicit NumVector(size_t size) {
-        this->v = std::vector<double>(size);
-    }
+    explicit NumVector(size_t size) : v(std::vector<double>(size)){}
 
     double norm() const {
         // make sure result is empty
