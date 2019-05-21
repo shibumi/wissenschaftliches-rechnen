@@ -5,7 +5,7 @@
 #include <vector>
 #include <iostream>
 #include <cmath>
-#include "NumVector.cpp"
+#include "NumVectorDerived.cpp"
 int main(){
     NumVector v(3);
     v[0]=1; v[1]=3, v[2]=4;

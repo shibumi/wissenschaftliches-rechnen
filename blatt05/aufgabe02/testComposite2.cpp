@@ -1,11 +1,11 @@
 //
-// Created by chris on 5/21/19.
+// Created by chris on 5/22/19.
 //
 
 #include <vector>
 #include <iostream>
 #include <cmath>
-#include "NumVector.cpp"
+#include "NumVectorComposite.cpp"
 void vectorTest(std::vector<double>& v){}
 int main(){
     NumVector v(3);
