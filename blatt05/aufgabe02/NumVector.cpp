@@ -14,9 +14,8 @@ public:
     double norm() const {
         // make sure result is empty
         double result = 0;
-        for(size_type i; i != size(); i++){
-            // We use the operator[](index) here directly
-            result += operator[](i)*operator[](i);
+        for(const double &value: *this){
+            result += value*value;
         }
         return sqrt(result);
     }
