@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.12)
 project(wissenschaftliches-rechnen)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pedantic -Werror")
 add_subdirectory(blatt01)
 add_subdirectory(blatt02)
 add_subdirectory(blatt03)
