@@ -95,19 +95,9 @@ A::foo
 ## Aufgabe 4
 Beim Ausführen des Programms kann folgender Fehler festgestellt werden:
 ```
-/home/chris/clion-2019.1.2/bin/cmake/linux/bin/cmake --build /home/chris/export/github/wissenschaftliches-rechnen/cmake-build-debug --target blatt05-aufgabe4 -- -j 2
-[ 50%] Building CXX object blatt05/aufgabe04/CMakeFiles/blatt05-aufgabe4.dir/aufgabe04.cpp.o
-/home/chris/export/github/wissenschaftliches-rechnen/blatt05/aufgabe04/aufgabe04.cpp: In destructor ‘Foo::~Foo()’:
-/home/chris/export/github/wissenschaftliches-rechnen/blatt05/aufgabe04/aufgabe04.cpp:29:43: error: throw will always call terminate() [-Werror=terminate]
-         throw my_exception("Foo exception");
-                                           ^
-/home/chris/export/github/wissenschaftliches-rechnen/blatt05/aufgabe04/aufgabe04.cpp:29:43: note: in C++11 destructors default to noexcept
-cc1plus: all warnings being treated as errors
-make[3]: *** [blatt05/aufgabe04/CMakeFiles/blatt05-aufgabe4.dir/build.make:63: blatt05/aufgabe04/CMakeFiles/blatt05-aufgabe4.dir/aufgabe04.cpp.o] Error 1
-make[2]: *** [CMakeFiles/Makefile2:662: blatt05/aufgabe04/CMakeFiles/blatt05-aufgabe4.dir/all] Error 2
-make[1]: *** [CMakeFiles/Makefile2:674: blatt05/aufgabe04/CMakeFiles/blatt05-aufgabe4.dir/rule] Error 2
+In destructor ‘Foo::~Foo()’:
+error: throw will always call terminate() [-Werror=terminate] throw
 ```
-
 Was da passiert nennt sich "Stack unwinding". Dadurch, dass die Exception im Destruktor ausgelöst wird, wird der Stack erneut abgewickelt.
 Dieses Fehlerverhalten ist allerdings nicht im Standard vorgesehen, da der Destruktor normalerweise dazu dient Objekte zu entfernen und Ähnliches.
 Dadurch würde der Stack weiter abgewickelt werden bis zu Objekten die nicht mehr existieren, deshalb sollten Exceptions laut Standard immer
