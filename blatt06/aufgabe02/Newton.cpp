@@ -19,7 +19,7 @@ std::function<double(double)>& Newton::getFunc() {
 auto& Newton::make_func() {
     auto f = new std::function<double(double)>([coefficients = m_coefficients](double x){
         for(auto &coefficient: coefficients){
-
+            // hier wussten wir leider nicht weiter
         }
     })
 }
@@ -29,6 +29,7 @@ Newton::Newton(std::vector<std::pair<double, double>> coordinates) : m_coordinat
         if(value.second == m_coordinates.front().second) {
             // y0 = a0 in our newton interpolation
             m_coefficients.push_back(value.second);
+            // hier wussten wir leider nicht weiter wie wir die restlichen Terme zusammenbauen
         }
 
     }
