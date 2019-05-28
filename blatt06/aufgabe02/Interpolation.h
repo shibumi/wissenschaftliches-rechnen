@@ -1,5 +1,9 @@
 //
-// Created by chris on 5/27/19.
+// Christian Rebischke
+// Matrikelnummer: 432108
+//
+// Sajedeh Majdi
+// Matrikelnummer: 493981
 //
 
 #ifndef BLATT02_INTERPOLATION_H
