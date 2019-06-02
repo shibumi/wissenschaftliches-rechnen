@@ -4,7 +4,7 @@
 #include <iostream>
 
 // Set number of matrix rows and columns and 
-// initialize matrix elements with a given double value
+// initialize matrix elements with a given T value
 template<typename T>
 void MatrixClass<T>::resize(size_t numRows, size_t numCols, const T &value) {
     if ((numRows_ + numCols_ > 0) && (numRows_ * numCols_ == 0)) {
@@ -12,7 +12,7 @@ void MatrixClass<T>::resize(size_t numRows, size_t numCols, const T &value) {
         numCols_ = 0;
     }
     a_.release();
-    a_ = std::unique_ptr<double[]>(new double[numRows_ * numCols_]);
+    a_ = std::unique_ptr<T[]>(new T[numRows_ * numCols_]);
     for (size_t i = 0; i < size_; ++i)
         a_[i] = value;
     numRows_ = numRows;

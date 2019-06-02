@@ -4,7 +4,7 @@
 
 int main() {
     // Define a matrix A
-    MatrixClass A(4, 4);
+    MatrixClass<double> A(4, 4);
     std::cout << "A : " << std::endl;
     A.print();
 
@@ -15,7 +15,7 @@ int main() {
         A(i + 1, i) = A(i, i + 1) = -1.0;
 
     // Define a matrix C of same content as A
-    MatrixClass C(A);
+    MatrixClass<double> C(A);
     std::cout << "C : " << std::endl;
     C.print();
 
