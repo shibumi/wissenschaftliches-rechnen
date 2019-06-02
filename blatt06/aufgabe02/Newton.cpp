@@ -31,6 +31,5 @@ Newton::Newton(std::vector<std::pair<double, double>> coordinates) : m_coordinat
             m_coefficients.push_back(value.second);
             // hier wussten wir leider nicht weiter wie wir die restlichen Terme zusammenbauen
         }
-
     }
 }
