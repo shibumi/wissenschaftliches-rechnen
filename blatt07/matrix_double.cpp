@@ -5,7 +5,8 @@
 
 // Set number of matrix rows and columns and 
 // initialize matrix elements with a given double value
-void MatrixClass::resize(size_t numRows, size_t numCols, const double &value) {
+template<typename T>
+void MatrixClass<T>::resize(size_t numRows, size_t numCols, const T &value) {
     if ((numRows_ + numCols_ > 0) && (numRows_ * numCols_ == 0)) {
         numRows_ = 0;
         numCols_ = 0;
@@ -19,7 +20,8 @@ void MatrixClass::resize(size_t numRows, size_t numCols, const double &value) {
 }
 
 // Access matrix element at position (i,j)
-double &MatrixClass::operator()(size_t i, size_t j) {
+template<typename T>
+T &MatrixClass<T>::operator()(size_t i, size_t j) {
     if ((i < 0) || (i >= numRows_)) {
         std::cerr << "Illegal row index " << i;
         std::cerr << " valid range is (0:" << numRows_ - 1 << ")";
@@ -36,7 +38,8 @@ double &MatrixClass::operator()(size_t i, size_t j) {
 }
 
 // Access matrix element at position (i,j)
-double MatrixClass::operator()(size_t i, size_t j) const {
+template<typename T>
+T MatrixClass<T>::operator()(size_t i, size_t j) const {
     if ((i < 0) || (i >= numRows_)) {
         std::cerr << "Illegal row index " << i;
         std::cerr << " valid range is (0:" << numRows_ - 1 << ")";
@@ -53,7 +56,8 @@ double MatrixClass::operator()(size_t i, size_t j) const {
 }
 
 // Output matrix content
-void MatrixClass::print() const {
+template<typename T>
+void MatrixClass<T>::print() const {
     std::cout << "(" << numRows_ << "x";
     std::cout << numCols_ << ") matrix:" << std::endl;
     for (size_t i = 0; i < numRows_; ++i) {
@@ -68,7 +72,8 @@ void MatrixClass::print() const {
 // Arithmetic functions 
 
 // Multiplication by value x
-MatrixClass &MatrixClass::operator*=(double x) {
+template<typename T>
+MatrixClass<T> &MatrixClass<T>::operator*=(T x) {
     for (size_t i = 0; i < size_; ++i)
         a_[i] *= x;
 
@@ -76,7 +81,8 @@ MatrixClass &MatrixClass::operator*=(double x) {
 }
 
 // Addition
-MatrixClass &MatrixClass::operator+=(const MatrixClass &x) {
+template<typename T>
+MatrixClass<T> &MatrixClass<T>::operator+=(const MatrixClass<T> &x) {
     if ((x.numRows_ != numRows_) || (x.numCols_ != numCols_)) {
         std::cerr << "Dimensions of matrix a (" << numRows_
                   << "x" << numCols_ << ") and matrix x ("
@@ -90,21 +96,24 @@ MatrixClass &MatrixClass::operator+=(const MatrixClass &x) {
 
 
 // More arithmetic functions
-MatrixClass operator*(const MatrixClass &a, double x) {
-    MatrixClass temp(a);
+template<typename T>
+MatrixClass<T> operator*(const MatrixClass<T> &a, T x) {
+    MatrixClass<T> temp(a);
     temp *= x;
     return temp;
 }
 
-MatrixClass operator*(double x, const MatrixClass &a) {
-    MatrixClass temp(a);
+template<typename T>
+MatrixClass<T> operator*(T x, const MatrixClass<T> &a) {
+    MatrixClass<T> temp(a);
     temp *= x;
     return temp;
 }
 
 // Concatenate
-MatrixClass operator+(const MatrixClass &a, const MatrixClass &b) {
-    MatrixClass temp(a);
+template<typename T>
+MatrixClass<T> operator+(const MatrixClass<T> &a, const MatrixClass<T> &b) {
+    MatrixClass<T> temp(a);
     temp += b;
     return temp;
 }

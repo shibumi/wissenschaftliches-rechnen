@@ -3,24 +3,25 @@
 #include <vector>
 
 /**
- * Matrix Class representing matrices of double values
+ * Matrix Class representing matrices of T values
  */
 
+template<typename T>
 class MatrixClass {
 public:
 
     // Set number of matrix rows and columns and initialize its elements with value
-    void resize(size_t numRows, size_t numCols, const double &value = double());
+    void resize(size_t numRows, size_t numCols, const T &value = T());
 
     // Access matrix element at position (i,j)
-    double &operator()(size_t i, size_t j);
+    T &operator()(size_t i, size_t j);
 
-    double operator()(size_t i, size_t j) const;
+    T operator()(size_t i, size_t j) const;
 
     // Arithmetic functions 
-    MatrixClass &operator*=(double x);
+    MatrixClass<T> &operator*=(T x);
 
-    MatrixClass &operator+=(const MatrixClass &b);
+    MatrixClass<T> &operator+=(const MatrixClass<T> &b);
 
     // Output matrix content
     void print() const;
@@ -35,9 +36,9 @@ public:
         return numCols_;
     }
 
-    MatrixClass &operator=(const MatrixClass &b) {
+    MatrixClass<T> &operator=(const MatrixClass<T> &b) {
         a_.release();
-        a_ = std::unique_ptr<double[]>(new double[b.size_]);
+        a_ = std::unique_ptr<T[]>(new T[b.size_]);
         for (size_t i = 0; i < size_; ++i)
             a_[i] = b.a_[i];
         numRows_ = b.numRows_;
@@ -48,13 +49,13 @@ public:
 
 
     // Constructors
-    MatrixClass(size_t numRows, size_t numCols, const double &value = double()) :
+    MatrixClass(size_t numRows, size_t numCols, const T &value = T()) :
             numRows_(numRows), numCols_(numCols) {
         if ((numRows_ + numCols_ > 0) && (numRows_ * numCols_ == 0)) {
             numRows_ = 0;
             numCols_ = 0;
         }
-        a_ = std::unique_ptr<double[]>(new double[numRows_ * numCols_]);
+        a_ = std::unique_ptr<T[]>(new T[numRows_ * numCols_]);
         for (size_t j = 0; j < size_; ++j)
             a_[j] = value;
     }
@@ -63,8 +64,8 @@ public:
 
     MatrixClass() = default;
 
-    MatrixClass(const MatrixClass &b) {
-        a_ = std::unique_ptr<double[]>(new double[b.size_]);
+    MatrixClass(const MatrixClass<T> &b) {
+        a_ = std::unique_ptr<T[]>(new T[b.size_]);
         for (size_t i = 0; i < size_; ++i)
             a_[i] = b.a_[i];
         numRows_ = b.numRows_;
@@ -74,7 +75,7 @@ public:
 
 private:
     // matrix elements
-    std::unique_ptr<double[]> a_;
+    std::unique_ptr<T[]> a_;
     // number of rows
     size_t numRows_ = 0;
     // number of columns
@@ -83,8 +84,11 @@ private:
 };
 
 // More arithmetic functions
-MatrixClass operator*(const MatrixClass &a, double x);
+template<typename T>
+MatrixClass<T> operator*(const MatrixClass<T> &a, T x);
 
-MatrixClass operator*(double x, const MatrixClass &a);
+template<typename T>
+MatrixClass<T> operator*(T x, const MatrixClass<T> &a);
 
-MatrixClass operator+(const MatrixClass &a, const MatrixClass &b);
+template<typename T>
+MatrixClass<T> operator+(const MatrixClass<T> &a, const MatrixClass<T> &b);
