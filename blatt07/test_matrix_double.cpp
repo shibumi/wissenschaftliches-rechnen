@@ -19,7 +19,7 @@ int main() {
     std::cout << "C : " << std::endl;
     C.print();
 
-    A = 2 * C;
+    //A = 2 * C;
     std::cout << "A = 2 * C" << std::endl;
     A.print();
 

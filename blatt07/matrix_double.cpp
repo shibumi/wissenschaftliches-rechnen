@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <iomanip>
 #include <iostream>
+#include "exceptions.cpp"
 
 // Set number of matrix rows and columns and 
 // initialize matrix elements with a given T value
@@ -22,36 +23,16 @@ void MatrixClass<T>::resize(size_t numRows, size_t numCols, const T &value) {
 // Access matrix element at position (i,j)
 template<typename T>
 T &MatrixClass<T>::operator()(size_t i, size_t j) {
-    if ((i < 0) || (i >= numRows_)) {
-        std::cerr << "Illegal row index " << i;
-        std::cerr << " valid range is (0:" << numRows_ - 1 << ")";
-        std::cerr << std::endl;
-        exit(EXIT_FAILURE);
-    }
-    if ((j < 0) || (j >= numCols_)) {
-        std::cerr << "Illegal column index " << j;
-        std::cerr << " valid range is (0:" << numCols_ - 1 << ")";
-        std::cerr << std::endl;
-        exit(EXIT_FAILURE);
-    }
+    if ((i < 0) || (i >= numRows_)) throw IllegalRowIndex(numRows_);
+    if ((j < 0) || (j >= numCols_)) throw IllegalColumnIndex(numCols_);
     return a_[i * numCols_ + j];
 }
 
 // Access matrix element at position (i,j)
 template<typename T>
 T MatrixClass<T>::operator()(size_t i, size_t j) const {
-    if ((i < 0) || (i >= numRows_)) {
-        std::cerr << "Illegal row index " << i;
-        std::cerr << " valid range is (0:" << numRows_ - 1 << ")";
-        std::cerr << std::endl;
-        exit(EXIT_FAILURE);
-    }
-    if ((j < 0) || (j >= numCols_)) {
-        std::cerr << "Illegal column index " << j;
-        std::cerr << " valid range is (0:" << numCols_ - 1 << ")";
-        std::cerr << std::endl;
-        exit(EXIT_FAILURE);
-    }
+    if ((i < 0) || (i >= numRows_)) throw IllegalRowIndex(numRows_);
+    if ((j < 0) || (j >= numCols_)) throw IllegalColumnIndex(numCols_);
     return a_[i * numCols_ + j];
 }
 
@@ -83,12 +64,7 @@ MatrixClass<T> &MatrixClass<T>::operator*=(T x) {
 // Addition
 template<typename T>
 MatrixClass<T> &MatrixClass<T>::operator+=(const MatrixClass<T> &x) {
-    if ((x.numRows_ != numRows_) || (x.numCols_ != numCols_)) {
-        std::cerr << "Dimensions of matrix a (" << numRows_
-                  << "x" << numCols_ << ") and matrix x ("
-                  << numRows_ << "x" << numCols_ << ") do not match!";
-        exit(EXIT_FAILURE);
-    }
+    if ((x.numRows_ != numRows_) || (x.numCols_ != numCols_)) throw DimensionMismatch(numRows_, numCols_);
     for (size_t i = 0; i < size_; ++i)
         a_[i] += x.a_[i];
     return *this;
