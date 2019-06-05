@@ -1,3 +1,11 @@
+//
+// Christian Rebischke
+// Matrikelnummer: 432108
+//
+// Sajedeh Majdi
+// Matrikelnummer: 493981
+//
+
 #include "matrix_double.h"
 #include <iostream>
 #include <cstdlib>

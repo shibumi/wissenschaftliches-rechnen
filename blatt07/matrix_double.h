@@ -1,3 +1,11 @@
+//
+// Christian Rebischke
+// Matrikelnummer: 432108
+//
+// Sajedeh Majdi
+// Matrikelnummer: 493981
+//
+
 #include <iomanip>
 #include <iostream>
 #include <vector>
@@ -22,7 +30,7 @@ public:
     // Arithmetic functions 
     MatrixClass<T> &operator*=(T x);
 
-    MatrixClass<T> &operator+=(const MatrixClass<T> &b);
+    MatrixClass<T> &operator+=(const MatrixClass<T> &x);
 
     // Output matrix content
     void print() const;
@@ -60,7 +68,7 @@ public:
             a_[j] = value;
     }
 
-    MatrixClass(size_t numElem) : MatrixClass(numElem, numElem) {}
+    explicit MatrixClass(size_t numElem) : MatrixClass(numElem, numElem) {}
 
     MatrixClass() = default;
 
