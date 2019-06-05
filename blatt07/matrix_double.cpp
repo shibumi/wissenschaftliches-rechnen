@@ -1,5 +1,4 @@
 #include "matrix_double.h"
-#include <cstdlib>
 #include <iomanip>
 #include <iostream>
 #include "exceptions.cpp"
@@ -8,16 +7,16 @@
 // initialize matrix elements with a given T value
 template<typename T>
 void MatrixClass<T>::resize(size_t numRows, size_t numCols, const T &value) {
-    if ((numRows_ + numCols_ > 0) && (numRows_ * numCols_ == 0)) {
-        numRows_ = 0;
-        numCols_ = 0;
+    if ((numRows + numCols > 0) && (numRows * numCols == 0)) {
+        numRows = 0;
+        numCols = 0;
     }
     a_.release();
-    a_ = std::unique_ptr<T[]>(new T[numRows_ * numCols_]);
-    for (size_t i = 0; i < size_; ++i)
-        a_[i] = value;
     numRows_ = numRows;
     numCols_ = numCols;
+    a_ = std::unique_ptr<T[]>(new T[numRows_ * numCols_]);
+    for (size_t i = 0; i < numRows_ * numCols_; ++i)
+        a_[i] = value;
 }
 
 // Access matrix element at position (i,j)
@@ -55,7 +54,7 @@ void MatrixClass<T>::print() const {
 // Multiplication by value x
 template<typename T>
 MatrixClass<T> &MatrixClass<T>::operator*=(T x) {
-    for (size_t i = 0; i < size_; ++i)
+    for (size_t i = 0; i < numRows_ * numCols_; ++i)
         a_[i] *= x;
 
     return *this;
@@ -65,7 +64,7 @@ MatrixClass<T> &MatrixClass<T>::operator*=(T x) {
 template<typename T>
 MatrixClass<T> &MatrixClass<T>::operator+=(const MatrixClass<T> &x) {
     if ((x.numRows_ != numRows_) || (x.numCols_ != numCols_)) throw DimensionMismatch(numRows_, numCols_);
-    for (size_t i = 0; i < size_; ++i)
+    for (size_t i = 0; i < numRows_ * numCols_; ++i)
         a_[i] += x.a_[i];
     return *this;
 }

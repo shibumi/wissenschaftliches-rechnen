@@ -38,12 +38,11 @@ public:
 
     MatrixClass<T> &operator=(const MatrixClass<T> &b) {
         a_.release();
-        a_ = std::unique_ptr<T[]>(new T[b.size_]);
-        for (size_t i = 0; i < size_; ++i)
-            a_[i] = b.a_[i];
         numRows_ = b.numRows_;
         numCols_ = b.numCols_;
-        size_ = b.size_;
+        a_ = std::unique_ptr<T[]>(new T[numRows_ * numCols_]);
+        for (size_t i = 0; i < numRows_ * numCols_; ++i)
+            a_[i] = b.a_[i];
         return *this;
     }
 
@@ -56,7 +55,7 @@ public:
             numCols_ = 0;
         }
         a_ = std::unique_ptr<T[]>(new T[numRows_ * numCols_]);
-        for (size_t j = 0; j < size_; ++j)
+        for (size_t j = 0; j < numRows_ * numCols_; ++j)
             a_[j] = value;
     }
 
@@ -65,12 +64,11 @@ public:
     MatrixClass() = default;
 
     MatrixClass(const MatrixClass<T> &b) {
-        a_ = std::unique_ptr<T[]>(new T[b.size_]);
-        for (size_t i = 0; i < size_; ++i)
-            a_[i] = b.a_[i];
         numRows_ = b.numRows_;
         numCols_ = b.numCols_;
-        size_ = b.size_;
+        a_ = std::unique_ptr<T[]>(new T[numRows_ * numCols_]);
+        for (size_t i = 0; i < numRows_ * numCols_; ++i)
+            a_[i] = b.a_[i];
     }
 
 private:
@@ -80,7 +78,6 @@ private:
     size_t numRows_ = 0;
     // number of columns
     size_t numCols_ = 0;
-    size_t size_ = 0;
 };
 
 // More arithmetic functions
