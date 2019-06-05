@@ -19,7 +19,7 @@ int main() {
     std::cout << "C : " << std::endl;
     C.print();
 
-    A = 2 * C;
+    //A = 2 * C;
     std::cout << "A = 2 * C" << std::endl;
     A.print();
 
@@ -41,5 +41,27 @@ int main() {
     // Print A
     std::cout << "A :" << std::endl;
     A.print();
+
+    // Exception tests
+    try {
+        MatrixClass<int> D(4,4);
+        std::cout <<  D(-1,0);
+    } catch (const IllegalRowIndex &e) {
+        std::cout << e.what() << std::endl;
+    }
+    try {
+        MatrixClass<int> E(5,5);
+        std::cout << E(4,-1);
+    } catch (const IllegalColumnIndex &e) {
+        std::cout << e.what() << std::endl;
+    }
+    try {
+        MatrixClass<int> D(4,4);
+        MatrixClass<int> E(5,5);
+        MatrixClass<int> F = D + E;
+    } catch (const DimensionMismatch &e) {
+        std::cout << e.what() << std::endl;
+    }
+
 
 }

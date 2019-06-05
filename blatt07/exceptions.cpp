@@ -33,8 +33,9 @@ class DimensionMismatch : public std::exception {
 private:
     std::string m_msg;
 public:
-    DimensionMismatch(const size_t numRows, const size_t numCols) : m_msg(
-            std::string("Dimension mismatch: ") + std::to_string(numRows) + " x " + std::to_string(numCols)) {}
+    DimensionMismatch(const size_t numRows, const size_t numCols, const size_t xNumRows, const size_t xNumCols) : m_msg(
+            std::string("Dimension mismatch: ") + std::to_string(numRows) + " x " + std::to_string(numCols) + " with " +
+            std::to_string(xNumRows) + " x " + std::to_string(xNumCols)) {}
 
     const char *what() const noexcept override {
         return m_msg.c_str();
