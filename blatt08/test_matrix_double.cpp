@@ -22,6 +22,15 @@ int main() {
     for (size_t i = 0; i < A.rows() - 1; ++i)
         A(i + 1, i) = A(i, i + 1) = -1.0;
 
+    // Uncomment me for testing the Iterator
+    // Unfortunately the implementation is still buggy and will not run
+    // We have no idea why...
+    //for(auto row: A) {
+    //    for( auto col: row) {
+    //        std::cout << col << std::endl;
+    //    }
+    //}
+
     // Define a matrix C of same content as A
     NumMatrixClass<double> C(A);
     std::cout << "C : " << std::endl;

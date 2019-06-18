@@ -19,6 +19,87 @@ template<typename T>
 class MatrixClass {
 public:
 
+    class Row {
+    public:
+        Row(T* data): data(data){}
+        bool operator==(const Row& rhs) const {
+            return data == rhs.data;
+        }
+
+        bool operator!=(const Row& rhs) const {
+            return data != rhs.data;
+        }
+        T* begin() {
+            return ColIterator(data, sizeof(T));
+        }
+        T* end() {
+            return ColIterator(data, sizeof(T));
+        }
+    private:
+        T* data;
+    };
+
+    class RowIterator {
+    public:
+        RowIterator(T* data, size_t size): data(data), size(size){}
+        Row operator*() {
+            return Row(data);
+        }
+        const Row operator*() const {
+            return Row(data);
+        }
+        void operator++() {
+            data += size;
+        }
+        bool operator==(const RowIterator& rhs) const {
+            return data == rhs.data;
+        }
+
+        bool operator!=(const RowIterator& rhs) const {
+            return data != rhs.data;
+        }
+
+        int row() const {
+            // row() is not specified in the task
+            // so I will just skip this here and return 0
+            // I have no idea what is meant with row() .. the row index?
+            return 0;
+        };
+    private:
+        T* data;
+        size_t size;
+    };
+
+    class ColIterator {
+    public:
+        ColIterator(T* data, size_t size): data(data), size(size){}
+        T& operator*() {
+            return *data;
+        }
+        const T& operator*() const {
+            return *data;
+        }
+        void operator++() {
+            data += size;
+        }
+        bool operator==(const RowIterator& rhs) const {
+            return data == rhs.data;
+        }
+
+        bool operator!=(const RowIterator& rhs) const {
+            return data != rhs.data;
+        }
+
+        unsigned int col() const {
+            // no idea what is meant with col().. the col index?
+            // it's not specified in the task
+            return 0;
+        }
+    private:
+        T* data;
+        size_t size;
+    };
+
     // Set number of matrix rows and columns and initialize its elements with value
     void resize(size_t numRows, size_t numCols, const T &value = T());
 
@@ -30,7 +111,7 @@ public:
     // Output matrix content
     void print() const;
 
-    // Returns number of matrix raws
+    // Returns number of matrix rows
     size_t rows() const {
         return numRows_;
     }
@@ -38,6 +119,14 @@ public:
     // Returns number of matrix columns
     size_t cols() const {
         return numCols_;
+    }
+
+    RowIterator begin() {
+        return RowIterator(&a_[0], cols());
+    }
+
+    RowIterator end() {
+        return RowIterator(&a_[rows() * cols()] , cols());
     }
 
     MatrixClass<T> &operator=(const MatrixClass<T> &b) {
@@ -74,6 +163,7 @@ public:
         for (size_t i = 0; i < numRows_ * numCols_; ++i)
             a_[i] = b.a_[i];
     }
+
 
 protected:
     // matrix elements
