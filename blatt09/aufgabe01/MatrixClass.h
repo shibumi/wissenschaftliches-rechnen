@@ -21,7 +21,7 @@ public:
 
     class Row {
     public:
-        Row(T* data): data(data){}
+        explicit Row(T* data): data(data){}
         bool operator==(const Row& rhs) const {
             return data == rhs.data;
         }
